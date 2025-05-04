@@ -1,9 +1,11 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.13;
 
+import {Exchange} from "./Exchange.sol";
+
 contract ExchangeFactory {
     mapping(address => address) public exchangeFor;
-    address[] public allExchanged;
+    address[] public allExchanges;
 
     event ExchangeCreated(
         address indexed token,
@@ -12,10 +14,10 @@ contract ExchangeFactory {
     );
 
     function exchangeCount() external view returns (uint256) {
-        return allExchanged.length;
+        return allExchanges.length;
     }
 
-    function createExchange() external returns (address) {
+    function createExchange(address _token) external returns (address) {
         // TODO: Implement createExchange function
         // Requirements:
         // 1. Verify token address is not zero
